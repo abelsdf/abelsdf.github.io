@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://abelsdf.github.io/"/>
-  <updated>2017-07-15T14:31:08.880Z</updated>
+  <updated>2017-07-15T14:34:03.023Z</updated>
   <id>https://abelsdf.github.io/</id>
   
   <author>
@@ -20,11 +20,10 @@
     <link href="https://abelsdf.github.io/2017/07/15/%E6%96%B0%E9%97%BBAPP/"/>
     <id>https://abelsdf.github.io/2017/07/15/新闻APP/</id>
     <published>2017-07-15T12:19:30.345Z</published>
-    <updated>2017-07-15T14:31:08.880Z</updated>
+    <updated>2017-07-15T14:34:03.023Z</updated>
     
     <content type="html"><![CDATA[<hr>
-<h1 id="使用RxJava-Retrofit-Kotlin打造新闻APP"><a href="#使用RxJava-Retrofit-Kotlin打造新闻APP" class="headerlink" title="使用RxJava+Retrofit+Kotlin打造新闻APP"></a>使用RxJava+Retrofit+Kotlin打造新闻APP</h1><hr>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从 Kotlin 被 google 选中为 Android 官方编程语言之一，业内的关注度就一直在上升。笔者也是第一次使用Kotlin写一个完整的程序，边做边学习。</p>
+<h2 id="使用RxJava-Retrofit-Kotlin打造新闻APP"><a href="#使用RxJava-Retrofit-Kotlin打造新闻APP" class="headerlink" title="使用RxJava+Retrofit+Kotlin打造新闻APP"></a>使用RxJava+Retrofit+Kotlin打造新闻APP</h2><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从 Kotlin 被 google 选中为 Android 官方编程语言之一，业内的关注度就一直在上升。笔者也是第一次使用Kotlin写一个完整的程序，边做边学习。</p>
 <h2 id="Rxjava"><a href="#Rxjava" class="headerlink" title="Rxjava"></a>Rxjava</h2><p>RxJava是Reactive Extensions的Java VM实现：用于通过使用observable序列来组合异步和基于事件的程序的库。</p>
 <blockquote>
 <p>github地址 <a href="https://github.com/ReactiveX/RxJava" target="_blank" rel="external">https://github.com/ReactiveX/RxJava</a></p>
@@ -67,7 +66,7 @@
     <summary type="html">
     
       &lt;hr&gt;
-&lt;h1 id=&quot;使用RxJava-Retrofit-Kotlin打造新闻APP&quot;&gt;&lt;a href=&quot;#使用RxJava-Retrofit-Kotlin打造新闻APP&quot; class=&quot;headerlink&quot; title=&quot;使用RxJava+Retrofit+Kotlin打
+&lt;h2 id=&quot;使用RxJava-Retrofit-Kotlin打造新闻APP&quot;&gt;&lt;a href=&quot;#使用RxJava-Retrofit-Kotlin打造新闻APP&quot; class=&quot;headerlink&quot; title=&quot;使用RxJava+Retrofit+Kotlin打
     
     </summary>
     
