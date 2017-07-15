@@ -1,28 +1,157 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Android</title>
-  
-  <link href="/atom.xml" rel="self"/>
-  
-  <link href="https://abelsdf.github.io/"/>
-  <updated>2017-07-15T14:31:08.880Z</updated>
-  <id>https://abelsdf.github.io/</id>
-  
-  <author>
-    <name>单黛丰</name>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-  </author>
-  
-  <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="https://abelsdf.github.io/2017/07/15/%E6%96%B0%E9%97%BBAPP/"/>
-    <id>https://abelsdf.github.io/2017/07/15/新闻APP/</id>
-    <published>2017-07-15T12:19:30.345Z</published>
-    <updated>2017-07-15T14:31:08.880Z</updated>
+    <title>Android</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="使用RxJava+Retrofit+Kotlin打造新闻APP
+前言自从 Kotlin 被 google 选中为 Android 官方编程语言之一，业内的关注度就一直在上升。笔者也是第一次使用Kotlin写一个完整的程序，边做边学习。
+RxjavaRxJava是Reactive Extensions的Java VM实现：用于通过使用observable序列来组合异步和基于事件的程序的库。
+
+gi">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Android">
+    <meta name="twitter:description" content="使用RxJava+Retrofit+Kotlin打造新闻APP
+前言自从 Kotlin 被 google 选中为 Android 官方编程语言之一，业内的关注度就一直在上升。笔者也是第一次使用Kotlin写一个完整的程序，边做边学习。
+RxjavaRxJava是Reactive Extensions的Java VM实现：用于通过使用observable序列来组合异步和基于事件的程序的库。
+
+gi">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Android">
+    <meta property="og:description" content="使用RxJava+Retrofit+Kotlin打造新闻APP
+前言自从 Kotlin 被 google 选中为 Android 官方编程语言之一，业内的关注度就一直在上升。笔者也是第一次使用Kotlin写一个完整的程序，边做边学习。
+RxjavaRxJava是Reactive Extensions的Java VM实现：用于通过使用observable序列来组合异步和基于事件的程序的库。
+
+gi">
+
     
-    <content type="html"><![CDATA[<hr>
+    <meta name="author" content="单黛丰">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+
+    <meta name="generator" content="hexo"/>
+    
+
+    <link rel="canonical" href="https://abelsdf.github.io/2017/07/15/新闻APP/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/background-cover.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Android 的主页"><img src="/images/avatar.jpg" width="80" alt="Android logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Android">Android</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">博客</a></li>
+            
+              <li class="navigation__item"><a href="/">首页</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/u/3280537050?from=feed&amp;loc=at&amp;nick=%E5%91%86%E4%B8%B0&amp;is_all=1" title="我的微博" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/abelsdf" title="查看我的GitHub主页" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-07-15T12:19:30.345Z" class="post-list__meta--date date">2017-07-15</time> &#8226; <span class="post-meta__tags tags">于&nbsp; </span>
+      <span class="page-pv">
+      &nbsp;阅读&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title"></h1>
+  </header>
+
+  <section class="post">
+    <hr>
 <h1 id="使用RxJava-Retrofit-Kotlin打造新闻APP"><a href="#使用RxJava-Retrofit-Kotlin打造新闻APP" class="headerlink" title="使用RxJava+Retrofit+Kotlin打造新闻APP"></a>使用RxJava+Retrofit+Kotlin打造新闻APP</h1><hr>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>自从 Kotlin 被 google 选中为 Android 官方编程语言之一，业内的关注度就一直在上升。笔者也是第一次使用Kotlin写一个完整的程序，边做边学习。</p>
 <h2 id="Rxjava"><a href="#Rxjava" class="headerlink" title="Rxjava"></a>Rxjava</h2><p>RxJava是Reactive Extensions的Java VM实现：用于通过使用observable序列来组合异步和基于事件的程序的库。</p>
@@ -62,36 +191,62 @@
 <h2 id="数据绑定到RecycleView-上"><a href="#数据绑定到RecycleView-上" class="headerlink" title="数据绑定到RecycleView 上"></a>数据绑定到RecycleView 上</h2><p>NewsAdapter 继承RecyclerView.Adapter<newsadapter.newsholder><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">class NewsAdapter(var mContext: Context, var mNewListBeans: MutableList&lt;NewslistBean&gt;?) : RecyclerView.Adapter&lt;NewsAdapter.NewsHolder&gt;() &#123;</div><div class="line">  override fun getItemCount(): Int &#123;</div><div class="line">      if (mNewListBeans == null) &#123;</div><div class="line">          return 0</div><div class="line">      &#125; else &#123;</div><div class="line">          return mNewListBeans!!.size</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  override fun onBindViewHolder(holder: NewsHolder?, position: Int) &#123;</div><div class="line">      holder!!.itemView.tvName.text = mNewListBeans!![position].title</div><div class="line">      holder!!.itemView.tvSign.text = mNewListBeans!![position].ctime</div><div class="line">      if (mNewListBeans!![position].picUrl != null &amp;&amp; !mNewListBeans!![position].picUrl.equals("")) &#123;</div><div class="line">          holder!!.itemView.ivPic.visibility = View.VISIBLE</div><div class="line">          Glide.with(mContext)</div><div class="line">                  .load(mNewListBeans!![position].picUrl)</div><div class="line">                  .into(holder!!.itemView.ivPic)</div><div class="line">      &#125; else &#123;</div><div class="line">          holder!!.itemView.ivPic.visibility = View.GONE</div><div class="line">      &#125;</div><div class="line">      holder!!.itemView.setOnClickListener &#123;</div><div class="line">          var intent = Intent(mContext, NewsDetailActivity::class.java)</div><div class="line">          intent.putExtra("pic", mNewListBeans!![position].picUrl)</div><div class="line">          intent.putExtra("url", mNewListBeans!![position].url)</div><div class="line">          mContext.startActivity(intent)</div><div class="line">      &#125;</div><div class="line">  &#125;</div><div class="line">  override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): NewsHolder &#123;</div><div class="line">      var view = LayoutInflater.from(mContext).inflate(R.layout.news_item, parent, false)</div><div class="line"></div><div class="line">      return NewsHolder(view)</div><div class="line">  &#125;</div><div class="line">  class NewsHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)</div><div class="line">&#125;</div></pre></td></tr></table></figure></newsadapter.newsholder></p>
 <p>RecyclerView配置<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">mNewAdapter = NewsAdapter(context, mNewsListBeans)</div><div class="line">recycleView.layoutManager = LinearLayoutManager(context)</div><div class="line">recycleView.adapter = <span class="function">mNewAdapter</span></div><div class="line"></div><div class="line"><span class="title">if</span> <span class="params">(mNewsListBeans.size == <span class="number">0</span>)</span> &#123;</div><div class="line">  mRefreshLayout!!.autoRefresh()</div><div class="line">&#125;</div><div class="line">mRefreshLayout!!.setOnRefreshListener &#123;</div><div class="line">  getData(<span class="string">"10"</span>, <span class="string">"refresh"</span>)</div><div class="line">&#125;</div><div class="line">mRefreshLayout!!.setOnLoadmoreListener &#123;</div><div class="line">  getData(<span class="string">"10"</span>, <span class="string">"load"</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>  第一次写博客，贴了好多代码，而且还有好多代码没贴上去，果然语文不好。总的来说这只是一个很简单的APP，虽然中间遇到了一些坑，也只能当做是来练手了。下次再写博客争取多文字少代码。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;hr&gt;
-&lt;h1 id=&quot;使用RxJava-Retrofit-Kotlin打造新闻APP&quot;&gt;&lt;a href=&quot;#使用RxJava-Retrofit-Kotlin打造新闻APP&quot; class=&quot;headerlink&quot; title=&quot;使用RxJava+Retrofit+Kotlin打
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>你好</title>
-    <link href="https://abelsdf.github.io/2017/07/13/hello-world/"/>
-    <id>https://abelsdf.github.io/2017/07/13/hello-world/</id>
-    <published>2017-07-13T10:18:03.940Z</published>
-    <updated>2017-07-13T13:34:14.887Z</updated>
-    
-    <content type="html"><![CDATA[<p>欢迎来到单黛丰的个人博客.<br><br>本博客用于自身学习笔记.</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;欢迎来到单黛丰的个人博客.&lt;br&gt;&lt;br&gt;本博客用于自身学习笔记.&lt;/p&gt;
 
+  </section>
+
+</article>
+
+<section class="read-more">
+           
     
-    </summary>
-    
-    
-  </entry>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">更早的文章</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/07/13/hello-world/" title="你好">你好</a></h2>
+                <p class="excerpt">
+                
+                欢迎来到单黛丰的个人博客.本博客用于自身学习笔记.
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-07-13T10:18:03.940Z" class="post-list__meta--date date">2017-07-13</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/07/13/hello-world/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-</feed>
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+    </span>
+    <span class="footer__copyright">
+        基于 <a href="http://hexo.io">Hexo</a> 搭建，感谢 <a href="https://pages.github.com/">GitHub Pages</a> 提供免费的托管服务
+    </span>
+    <span class="footer__copyright">
+        &copy; 2017 - 本站使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题,
+        由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+    </span>
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+    
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
