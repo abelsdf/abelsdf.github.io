@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://abelsdf.github.io/"/>
-  <updated>2017-07-15T14:35:17.004Z</updated>
+  <updated>2017-07-19T12:28:25.247Z</updated>
   <id>https://abelsdf.github.io/</id>
   
   <author>
@@ -14,6 +14,72 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title></title>
+    <link href="https://abelsdf.github.io/2017/07/19/Rx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://abelsdf.github.io/2017/07/19/Rx学习笔记/</id>
+    <published>2017-07-19T10:02:02.810Z</published>
+    <updated>2017-07-19T12:28:25.247Z</updated>
+    
+    <content type="html"><![CDATA[<hr>
+<h2 id="title-Rxjava学习笔记之创建操作符"><a href="#title-Rxjava学习笔记之创建操作符" class="headerlink" title="  title:Rxjava学习笔记之创建操作符"></a>  title:Rxjava学习笔记之创建操作符</h2><blockquote>
+<p>Rx和RxJava文档中文翻译项目 <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="external">https://mcxiaoke.gitbooks.io/rxdocs/content/</a></p>
+</blockquote>
+<h1 id="创建操作"><a href="#创建操作" class="headerlink" title="创建操作"></a>创建操作</h1><blockquote>
+<p>Create, Defer, Empty/Never/Throw, From, Interval, Just, Range, Repeat, Start, Timer</p>
+</blockquote>
+<ul>
+<li><p><a href="Just.md"><strong><code>just( )</code></strong></a> — 将一个或多个对象转换成发射这个或这些对象的一个Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Observable.just(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</div><div class="line">      .subscribe(System.out::println,</div><div class="line">          throwable -&gt; System.out.println(<span class="string">"Error encountered:"</span> + throwable.getMessage()),</div><div class="line">          () -&gt; System.out.println(<span class="string">"Sequence complete."</span>));</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">Sequence complete.</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="From.md"><strong><code>from( )</code></strong></a> — 将一个Iterable, 一个Future, 或者一个数组转换成一个Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Integer[] integers = &#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</div><div class="line">Observable.from(integers)</div><div class="line">    .subscribe(System.out::println,</div><div class="line">        throwable -&gt; System.out.println(<span class="string">"Error encountered: "</span> + throwable.getMessage()),</div><div class="line">        () -&gt; System.out.println(<span class="string">"Sequence complete"</span>));</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">0</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">Sequence complete</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="Range.md"><strong><code>range( )</code></strong></a> — 创建一个发射指定范围的整数序列的Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">3</span>)</div><div class="line">    .subscribe(System.out::println,</div><div class="line">        throwable -&gt; System.out.println(<span class="string">"Error encountered:"</span> + throwable.getMessage()),</div><div class="line">        () -&gt; System.out.println(<span class="string">"Sequence complete."</span>));</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">Sequence complete</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="Repeat.md"><strong><code>repeat( )</code></strong></a> — 创建一个重复发射指定数据或数据序列的Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">3</span>)</div><div class="line">      .repeat(<span class="number">2</span>)</div><div class="line">      .subscribe(System.out::println,</div><div class="line">          throwable -&gt; System.out.println(<span class="string">"Error encountered:"</span> + throwable.getMessage()),</div><div class="line">          () -&gt; System.out.println(<span class="string">"Sequence complete."</span>));</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">Sequence complete</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="Repeat.md"><strong><code>repeatWhen( )</code></strong></a> — 创建一个重复发射指定数据或数据序列的Observable，它依赖于另一个Observable发射的数据</p>
+</li>
+<li><p><a href="Create.md"><strong><code>create( )</code></strong></a> — 使用一个函数从头创建一个Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">  Observable.create((OnSubscribe&lt;Integer&gt;) observer -&gt; &#123;</div><div class="line">    <span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">if</span> (!observer.isUnsubscribed()) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">          observer.onNext(i);</div><div class="line">        &#125;</div><div class="line">        observer.onCompleted();</div><div class="line">      &#125;</div><div class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">      observer.onError(e);</div><div class="line">    &#125;</div><div class="line">  &#125;).subscribe(System.out::println,</div><div class="line">      throwable -&gt; System.out.println(<span class="string">"Error encountered:"</span> + throwable.getMessage()),</div><div class="line">      () -&gt; System.out.println(<span class="string">"Sequence complete."</span>));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">Sequence complete.</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="Defer.md"><strong><code>defer( )</code></strong></a> — 只有当订阅者订阅才创建Observable；为每个订阅创建一个新的Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Defer</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> String value;</div><div class="line"></div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setValue</span><span class="params">(String value)</span> </span>&#123;</div><div class="line">    <span class="keyword">this</span>.value = value;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="function">Observable&lt;String&gt; <span class="title">valueObservable</span><span class="params">()</span> </span>&#123;</div><div class="line"></div><div class="line">      <span class="keyword">return</span> Observable.defer(<span class="keyword">new</span> Func0&lt;Observable&lt;String&gt;&gt;() &#123;</div><div class="line">        <span class="meta">@Override</span></div><div class="line">        <span class="function"><span class="keyword">public</span> Observable&lt;String&gt; <span class="title">call</span><span class="params">()</span> </span>&#123;</div><div class="line">          <span class="keyword">return</span> Observable.just(value);</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">Sequence complete.</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="Interval.md"><strong><code>interval( )</code></strong></a> — 创建一个按照给定的时间间隔发射整数序列的Observable</p>
+</li>
+<li><a href="Timer.md"><strong><code>timer( )</code></strong></a> — 创建一个在给定的延时之后发射单个数据的Observable</li>
+<li><a href="Empty.md"><strong><code>empty( )</code></strong></a> — 创建一个什么都不做直接通知完成的Observable</li>
+<li><a href="Empty.md"><strong><code>error( )</code></strong></a> — 创建一个什么都不做直接通知错误的Observable</li>
+<li><a href="Empty.md"><strong><code>never( )</code></strong></a> — 创建一个不发射任何数据的Observable</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;hr&gt;
+&lt;h2 id=&quot;title-Rxjava学习笔记之创建操作符&quot;&gt;&lt;a href=&quot;#title-Rxjava学习笔记之创建操作符&quot; class=&quot;headerlink&quot; title=&quot;  title:Rxjava学习笔记之创建操作符&quot;&gt;&lt;/a&gt;  title:Rxjav
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>使用RxJava+Retrofit+Kotlin打造新闻APP</title>
