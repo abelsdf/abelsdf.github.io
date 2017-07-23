@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://abelsdf.github.io/"/>
-  <updated>2017-07-23T17:05:39.738Z</updated>
+  <updated>2017-07-23T17:47:30.795Z</updated>
   <id>https://abelsdf.github.io/</id>
   
   <author>
@@ -14,6 +14,90 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Rxjava学习笔记之过滤操作符</title>
+    <link href="https://abelsdf.github.io/2017/07/24/Rxjava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E8%BF%87%E6%BB%A4%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+    <id>https://abelsdf.github.io/2017/07/24/Rxjava学习笔记之过滤操作符/</id>
+    <published>2017-07-23T17:18:44.278Z</published>
+    <updated>2017-07-23T17:47:30.795Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="过滤操作"><a href="#过滤操作" class="headerlink" title="过滤操作"></a>过滤操作</h1><blockquote>
+<p>Debounce, Distinct, ElementAt, Filter, First, IgnoreElements, Last, Sample, Skip, SkipLast, Take, TakeLast</p>
+</blockquote>
+<ul>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Filter.html" target="_blank" rel="external"><strong><code>Filter( )</code></strong></a> — 过滤数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">      .filter(item-&gt;item&lt;<span class="number">6</span>)</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/TakeLast.html" target="_blank" rel="external"><strong><code>TakeLast( )</code></strong></a>— 只发射最后的N项数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">      .takeLast(<span class="number">5</span>)</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Last.html" target="_blank" rel="external"><strong><code>last( )</code></strong></a> — 只发射最后的一项数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">10</span>)</div><div class="line">      .last()</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">10</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Last.html" target="_blank" rel="external"><strong><code>lastOrDefault( )</code></strong></a> — 只发射最后的一项数据，如果Observable为空就发射默认值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">        .filter(item-&gt;item&gt;<span class="number">10</span>)</div><div class="line">        .lastOrDefault(<span class="number">0</span>)</div><div class="line">        .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">0</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/TakeLast.html" target="_blank" rel="external"><strong><code>takeLastBuffer( )</code></strong></a> — 将最后的N项数据当做单个数据发射</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">      .takeLastBuffer(<span class="number">3</span>)</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[8, 9, 10]</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Skip.html" target="_blank" rel="external"><strong><code>skip()</code></strong></a> — 跳过开始的N项数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">      .skip(<span class="number">5</span>)</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/SkipLast.html" target="_blank" rel="external"><strong><code>skipLast( )</code></strong></a> — 跳过最后的N项数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">    .skipLast(<span class="number">5</span>)</div><div class="line">    .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Take.html" target="_blank" rel="external"><strong><code>take( )</code></strong></a> — 跳过最后的N项数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>,<span class="number">10</span>)</div><div class="line">    .skipLast(<span class="number">5</span>)</div><div class="line">    .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/First.html" target="_blank" rel="external"><strong><code>first( ) and takeFirst( )</code></strong></a> — 只发射第一项数据，或者满足某种条件的第一项数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">10</span>)</div><div class="line">  .first(item -&gt; item &gt; <span class="number">3</span>)</div><div class="line">  .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">4</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/First.html" target="_blank" rel="external"><strong><code>firstOrDefault( )</code></strong></a> — 只发射第一项数据，如果Observable为空就发射默认值</p>
+</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/ElementAt.html" target="_blank" rel="external"><strong><code>elementAt( )</code></strong></a> — 发射第N项数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/ElementAt.html" target="_blank" rel="external"><strong><code>elementAtOrDefault( )</code></strong></a> —发射第N项数据，如果Observable数据少于N项就发射默认值</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Sample.html" target="_blank" rel="external"><strong><code>sample( ) or throttleLast( )</code></strong></a> — 定期发射Observable最近的数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Sample.html" target="_blank" rel="external"><strong><code>throttleFirst( )</code></strong></a> — 定期发射Observable发射的第一项数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Debounce.html" target="_blank" rel="external"><strong><code>throttleWithTimeout( ) or debounce( )</code></strong></a> — 只有当Observable在指定的时间后还没有发射数据时，才发射一个数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Timeout.html" target="_blank" rel="external"><strong><code>timeout( )</code></strong></a> — 如果在一个指定的时间段后还没发射数据，就发射一个异常</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Distinct.html" target="_blank" rel="external"><strong><code>distinct( )</code></strong></a> — 过滤掉重复数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Distinct.html" target="_blank" rel="external"><strong><code>distinctUntilChanged( )</code></strong></a> —  过滤掉连续重复的数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Filter.html" target="_blank" rel="external"><strong><code>ofType( )</code></strong></a> — 只发射指定类型的数据</li>
+<li><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/IgnoreElements.html" target="_blank" rel="external"><strong><code>ignoreElements( )</code></strong></a> — 丢弃所有的正常数据，只发射错误或完成通知<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1>本文参考<blockquote>
+<p>Rx和RxJava文档中文翻译项目 <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="external">https://mcxiaoke.gitbooks.io/rxdocs/content/</a></p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;过滤操作&quot;&gt;&lt;a href=&quot;#过滤操作&quot; class=&quot;headerlink&quot; title=&quot;过滤操作&quot;&gt;&lt;/a&gt;过滤操作&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Debounce, Distinct, ElementAt, Filter, First, Ign
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Rxjava学习笔记之变换操作符</title>
