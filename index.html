@@ -131,7 +131,26 @@
   
     
     <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/07/19/Rx学习笔记/" title="link to post.title">Rxjava学习笔记之创建操作符</a></h2>
+      <h2 class="post-list__post-title post-title"><a href="/2017/07/23/Rxjava学习笔记之变换操作符/" title="link to post.title">Rxjava学习笔记之变换操作符</a></h2>
+      <p class="excerpt">
+    
+      变换操作
+Map, flatMap, scan, groupBy, buffer, window, cast
+
+
+Map( ) — 对序列的每一项都应用一个函数来变换Observable发射的数据序列
+123Observable.just(&quot;Hello&quot;)  .map(s -&amp;gt; s + &quot; RxJava&quot;)  .subscribe(System.out::println);
+输出
+1Hell
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-07-23T15:45:31.902Z" class="post-list__meta--date date">2017-07-23</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/07/23/Rxjava学习笔记之变换操作符/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/07/19/Rxjava学习笔记之创建操作符/" title="link to post.title">Rxjava学习笔记之创建操作符</a></h2>
       <p class="excerpt">
     
       创建操作
@@ -142,7 +161,7 @@ just( ) — 将一个或多个对象转换成发射这个或这些对象的一
 1234Observable.just(1, 2, 3)      .subscribe(System.out::println,
     &hellip;
       </p>
-      <div class="post-list__meta"><time datetime="2017-07-19T10:02:02.810Z" class="post-list__meta--date date">2017-07-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/07/19/Rx学习笔记/">继续阅读</a></div>
+      <div class="post-list__meta"><time datetime="2017-07-19T10:02:02.810Z" class="post-list__meta--date date">2017-07-19</time> &#8226; <span class="post-list__meta--tags tags">于&nbsp;</span><a class="btn-border-small" href="/2017/07/19/Rxjava学习笔记之创建操作符/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   

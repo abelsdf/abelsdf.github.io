@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://abelsdf.github.io/"/>
-  <updated>2017-07-19T12:54:27.035Z</updated>
+  <updated>2017-07-23T17:05:39.738Z</updated>
   <id>https://abelsdf.github.io/</id>
   
   <author>
@@ -16,9 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Rxjava学习笔记之变换操作符</title>
+    <link href="https://abelsdf.github.io/2017/07/23/Rxjava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%8F%98%E6%8D%A2%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+    <id>https://abelsdf.github.io/2017/07/23/Rxjava学习笔记之变换操作符/</id>
+    <published>2017-07-23T15:45:31.902Z</published>
+    <updated>2017-07-23T17:05:39.738Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="变换操作"><a href="#变换操作" class="headerlink" title="变换操作"></a>变换操作</h1><blockquote>
+<p>Map, flatMap, scan, groupBy, buffer, window, cast</p>
+</blockquote>
+<ul>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Map.html" target="_blank" rel="external"><strong><code>Map( )</code></strong></a> — 对序列的每一项都应用一个函数来变换Observable发射的数据序列</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.just(<span class="string">"Hello"</span>)</div><div class="line">  .map(s -&gt; s + <span class="string">" RxJava"</span>)</div><div class="line">  .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello RxJava</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/FlatMap.html" target="_blank" rel="external"><strong><code>flatMap( )</code>, <code>switchMap( )</code>,<code>concatMap( )</code>, and <code>flatMapIterable( )</code></strong></a> — 将Observable发射的数据集合变换为Observables集合，然后将这些Observable发射的数据平坦化的放进一个单独的Observable</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.just(<span class="string">"Java"</span>, <span class="string">"RxJava"</span>, <span class="string">"Kotlin"</span>)</div><div class="line">      .flatMap(s -&gt; Observable.just(<span class="string">"Hello "</span> + s))</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Hello Java</div><div class="line">Hello RxJava</div><div class="line">Hello Kotlin</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Scan.html" target="_blank" rel="external"><strong><code>scan( )</code></strong></a> — 对Observable发射的每一项数据应用一个函数，然后按顺序依次发射每一个值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.just(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</div><div class="line">      .scan((sum, item) -&gt; sum + item)</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">3</div><div class="line">6</div><div class="line">10</div><div class="line">15</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/GroupBy.html" target="_blank" rel="external"><strong><code>groupBy( )</code></strong></a> — 将Observable分拆为Observable集合，将原始Observable发射的数据按Key分组，每一个Observable发射一组不同的数据</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">10</span>)</div><div class="line">        .groupBy(item -&gt; &#123;</div><div class="line">          <span class="keyword">if</span> (item % <span class="number">2</span> == <span class="number">0</span>) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"偶数"</span>;</div><div class="line">          &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="keyword">return</span> <span class="string">"奇数"</span>;</div><div class="line">          &#125;</div><div class="line">        &#125;).subscribe(stringIntegerGroupedObservable -&gt; stringIntegerGroupedObservable.subscribe(</div><div class="line">        value -&gt; &#123;</div><div class="line">          System.out.println(stringIntegerGroupedObservable.getKey() + value);</div><div class="line">        &#125;));</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">奇数1</div><div class="line">偶数2</div><div class="line">奇数3</div><div class="line">偶数4</div><div class="line">奇数5</div><div class="line">偶数6</div><div class="line">奇数7</div><div class="line">偶数8</div><div class="line">奇数9</div><div class="line">偶数10</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Buffer.html" target="_blank" rel="external"><strong><code>buffer( )</code></strong></a> — 它定期从Observable收集数据到一个集合，然后把这些数据集合打包发射，而不是一次发射一个</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">10</span>)</div><div class="line">      .buffer(<span class="number">2</span>)</div><div class="line">      .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[1, 2]</div><div class="line">[3, 4]</div><div class="line">[5, 6]</div><div class="line">[7, 8]</div><div class="line">[9, 10]</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Window.html" target="_blank" rel="external"><strong><code>window( )</code></strong></a> — 定期将来自Observable的数据分拆成一些Observable窗口，然后发射这些窗口，而不是每次发射一项</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Observable.range(<span class="number">1</span>, <span class="number">5</span>)</div><div class="line">   .window(<span class="number">2</span>)</div><div class="line">   .subscribe(integerObservable -&gt; integerObservable.subscribe(System.out::println));</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://mcxiaoke.gitbooks.io/rxdocs/content/operators/Map.html" target="_blank" rel="external"><strong><code>cast( )</code></strong></a> — 在发射之前强制将Observable发射的所有数据转换为指定类型</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> String name;</div><div class="line">  <span class="keyword">private</span> String stuNo;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">  <span class="function"><span class="keyword">void</span> <span class="title">setStuNo</span><span class="params">(String stuNo)</span> </span>&#123;</div><div class="line">      <span class="keyword">this</span>.stuNo = stuNo;</div><div class="line">    &#125;</div><div class="line">  <span class="meta">@Override</span></div><div class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">return</span> name + <span class="string">":"</span> + stuNo;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">List&lt;Student&gt; studentList = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</div><div class="line">  Student student = <span class="keyword">new</span> Student();</div><div class="line">  student.setName(<span class="string">"name"</span> + i);</div><div class="line">  student.setStuNo(<span class="string">"stuNo"</span> + i);</div><div class="line">  studentList.add(student);</div><div class="line">&#125;</div><div class="line">Observable.from(studentList)</div><div class="line">    .cast(Student.class)</div><div class="line">    .subscribe(System.out::println);</div></pre></td></tr></table></figure>
+<p>输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">name0:stuNo0</div><div class="line">name1:stuNo1</div><div class="line">name2:stuNo2</div></pre></td></tr></table></figure>
+<h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1><p>本文参考</p>
+<blockquote>
+<p>Rx和RxJava文档中文翻译项目 <a href="https://mcxiaoke.gitbooks.io/rxdocs/content/" target="_blank" rel="external">https://mcxiaoke.gitbooks.io/rxdocs/content/</a></p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;变换操作&quot;&gt;&lt;a href=&quot;#变换操作&quot; class=&quot;headerlink&quot; title=&quot;变换操作&quot;&gt;&lt;/a&gt;变换操作&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Map, flatMap, scan, groupBy, buffer, window, cast
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Rxjava学习笔记之创建操作符</title>
-    <link href="https://abelsdf.github.io/2017/07/19/Rx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
-    <id>https://abelsdf.github.io/2017/07/19/Rx学习笔记/</id>
+    <link href="https://abelsdf.github.io/2017/07/19/Rxjava%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B9%8B%E5%88%9B%E5%BB%BA%E6%93%8D%E4%BD%9C%E7%AC%A6/"/>
+    <id>https://abelsdf.github.io/2017/07/19/Rxjava学习笔记之创建操作符/</id>
     <published>2017-07-19T10:02:02.810Z</published>
     <updated>2017-07-19T12:54:27.035Z</updated>
     
